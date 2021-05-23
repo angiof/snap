@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="commom_padding_min">8dp</dimen>
+    <dimen name="commom_padding_default">16dp</dimen>
+    <dimen name="commom_padding_middel">24</dimen>
+
+
+</resources>

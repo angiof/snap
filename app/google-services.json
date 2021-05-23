@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1028444792898",
+    "firebase_url": "https://snap-b42d1-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "snap-b42d1",
+    "storage_bucket": "snap-b42d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028444792898:android:fcbec2b4aa655149f4a5db",
+        "android_client_info": {
+          "package_name": "com.example.snap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028444792898-nb3cqf3ddnrdsugm35n3i33hpdheq4pf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpA6V-njTjeb4SeGjjxD9610_FOYJWDJM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1028444792898-nb3cqf3ddnrdsugm35n3i33hpdheq4pf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

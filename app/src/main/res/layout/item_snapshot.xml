@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageButton
+        android:id="@+id/btnDelate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/commom_padding_default"
+        android:layout_marginEnd="@dimen/commom_padding_default"
+        android:background="?attr/selectableItemBackground"
+        android:src="@drawable/ic_baseline_delete_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/commom_padding_default"
+        android:text="titolo della instantanea"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        app:layout_constraintBottom_toBottomOf="@id/btnDelate"
+        app:layout_constraintEnd_toStartOf="@id/btnDelate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnDelate"></TextView>
+
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cdLike"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/commom_padding_default"
+        android:layout_marginBottom="@dimen/commom_padding_default"
+        android:button="@drawable/ic_baseline_done_outline_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></com.google.android.material.checkbox.MaterialCheckBox>
+
+
+    <ImageView
+        android:id="@+id/imgPhoto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H,4:3"
+        android:layout_marginTop="@dimen/commom_padding_default"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cdLike"
+        app:layout_constraintTop_toBottomOf="@id/btnDelate"></ImageView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

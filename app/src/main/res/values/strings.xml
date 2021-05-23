@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">snap</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">add</string>
+    <string name="title_notifications">profilo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="db_stradamento">snapshots</string>
+    <string name="errore_toast">errore nel db</string>
+</resources>

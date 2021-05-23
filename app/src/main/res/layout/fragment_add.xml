@@ -1,14 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ProgressBar
+        android:id="@+id/progress_bar_adder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/commom_padding_default"
+        style="?android:progressBarStyleHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ProgressBar>
 
-</FrameLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="pubblicar"
+
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_adder"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        app:layout_goneMarginStart="@dimen/commom_padding_min"
+        android:id="@+id/tvMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/commom_padding_min"
+        android:text="@string/tittolo_messaggio"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        app:layout_constraintBottom_toBottomOf="@id/btPost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btPost"
+        app:layout_constraintTop_toTopOf="@id/btPost" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/commom_padding_min"
+        android:hint="previu titolo"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btPost">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/e_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:layout_marginTop="@dimen/commom_padding_default"
+        android:id="@+id/imagePhoto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintDimensionRatio="H,4:3"
+        >
+
+    </ImageView>
+
+    <ImageButton
+        android:id="@+id/btnSelect"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/selectableItemBackground"
+        android:src="@drawable/ic_baseline_image_search_24"
+        app:layout_constraintStart_toStartOf="@id/imagePhoto"
+        app:layout_constraintEnd_toEndOf="@id/imagePhoto"
+        app:layout_constraintTop_toTopOf="@id/imagePhoto"
+        app:layout_constraintBottom_toBottomOf="@id/imagePhoto"
+        ></ImageButton>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

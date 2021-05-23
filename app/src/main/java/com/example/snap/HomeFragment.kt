@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ///querry db +creazione del file stradamento dove andare a cercare
-        val querry = FirebaseDatabase.getInstance().reference.child("snapshots")
+        val querry = FirebaseDatabase.getInstance().reference.child(getString(R.string.patch_strdamento_snap))
         //opione collegamento del ob alla qurry creata nella riga 41
         val option = FirebaseRecyclerOptions.Builder<SnapShotDataClass>().setQuery(querry, SnapShotDataClass::class.java).build()
 
@@ -68,7 +68,6 @@ class HomeFragment : Fragment() {
                 }
 
             override fun onDataChanged() {
-                Toast.makeText(context, "cambiano", Toast.LENGTH_SHORT).show()
                 super.onDataChanged()
 
                 mBinding.progressBar.visibility=View.GONE

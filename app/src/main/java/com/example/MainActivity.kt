@@ -1,21 +1,28 @@
 package com.example
 
-import android.os.Binder
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.bumptech.glide.manager.SupportRequestManagerFragment
 import com.example.snap.AddFragment
 import com.example.snap.HomeFragment
 import com.example.snap.ProfileFragment
 import com.example.snap.R
 import com.example.snap.databinding.ActivityMainBinding
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.IdpResponse
+import com.google.firebase.auth.FirebaseAuth
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mBinder: ActivityMainBinding
     private lateinit var mFfragrmentManager: FragmentManager
     private lateinit var mActiveFragment: Fragment
+    private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
+    private var mFireAuth: FirebaseAuth? = null
+    private val RC_SIGN_IN=21
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +31,23 @@ class MainActivity : AppCompatActivity() {
         mBinder = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinder.root)
         setNav()
+
+        setUth()
+    }
+
+    private fun setUth() {
+        mFireAuth = FirebaseAuth.getInstance()
+        mAuthListener = FirebaseAuth.AuthStateListener {
+            val user = it.currentUser
+            if (user == null)
+                startActivityForResult(
+                    AuthUI.getInstance().createSignInIntentBuilder()
+                        .setAvailableProviders(
+                            Arrays.asList(
+                                AuthUI.IdpConfig.EmailBuilder().build(),
+                                AuthUI.IdpConfig.GoogleBuilder().build())
+                        ).build(),RC_SIGN_IN)
+        }
     }
 
     private fun setNav() {
@@ -71,7 +95,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_profile -> {
-                    mFfragrmentManager.beginTransaction().hide(mActiveFragment).show(profileFragment)
+                    mFfragrmentManager.beginTransaction().hide(mActiveFragment)
+                        .show(profileFragment)
                         .commit()
                     mActiveFragment = profileFragment
                     true
@@ -82,5 +107,29 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        mFireAuth?.addAuthStateListener(mAuthListener)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mFireAuth?.removeAuthStateListener(mAuthListener)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode==RC_SIGN_IN){
+            if (resultCode== RESULT_OK){
+                Toast.makeText(this, "welcome amico mio", Toast.LENGTH_SHORT).show()
+            }else{
+
+                if (IdpResponse.fromResultIntent(data)==null){
+                    finish()
+                }
+
+            }
+        }
+    }
 
 }
